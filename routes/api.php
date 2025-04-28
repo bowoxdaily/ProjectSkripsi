@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Be\AuthControllerBE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/register', [AuthControllerBE::class, 'register']);
+Route::post('/login', [AuthControllerBE::class, 'login']);
+Route::post('/logout', [AuthControllerBE::class, 'logout']);
+Route::post('/check-field', [AuthControllerBE::class, 'checkField']);

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Be\AuthControllerBE;
+use App\Http\Controllers\Fe\auth\AuthController;
+use App\Http\Controllers\Fe\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard');
 });
+
+Route::get('/login', [AuthController::class, 'pagelogin'])->name('viewlogin');
+Route::get('/register', [AuthController::class, 'pageregister'])->name('viewregister');
+Route::post('/logout', [AuthControllerBE::class, 'logout'])->name('logout');
+Route::get('siswa', [SiswaController::class, 'siswapage'])->name('siswa.dashboard');
